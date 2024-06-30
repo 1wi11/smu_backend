@@ -1,0 +1,5 @@
+CLIENT_ID = "debb9ef2afa1c404a8b14a3788d996a5"
+CLIENT_SECRET = "HuPlswzAiFcE9dWWdubA2EMwNv04kubD"
+REDIRECT_URI = "http://localhost:3000/oauth"
+SIGNOUT_REDIRECT_URI = "http://localhost:8000/logout"
+REST_API = "debb9ef2afa1c404a8b14a3788d996a5"
