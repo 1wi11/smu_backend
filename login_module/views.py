@@ -86,18 +86,18 @@ class KakaoCallback(APIView):
         else:
             serializer = User_Serializer(data = user_data)
             if serializer.is_valid():
-                serializer.save()
-                token: Token = TokenSerializer.get_token(user)
-                access_token = str(token.access_token),
-                refresh_token = str(token)
+                user = serializer.save()
+                if user is not None:
+                    token: Token = TokenSerializer.get_token(user)
+                    access_token = str(token.access_token),
+                    refresh_token = str(token)
                 
-                res = Response(
-                    {
-                        "access": access_token,
-                        "refresh": refresh_token,
-                    },
-                    status=status.HTTP_200_OK,
-                )
-
+                    res = Response(
+                        {
+                            "access": access_token,
+                            "refresh": refresh_token,
+                        },
+                        status=status.HTTP_200_OK,
+                    )
                 return res
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
